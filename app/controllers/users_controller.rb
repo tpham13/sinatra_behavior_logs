@@ -9,9 +9,9 @@ class UsersController < ApplicationController
           @error = "All fields must be completed"
           erb :'users/signup'
         else 
-          @user = User.create(params)
-          session[:user_id] = @user.id
-          erb :'/users/welcome_user'  
+          user = User.create(params)
+          session[:user_id] = user.id
+          redirect '/behavior_logs'
         end 
     end 
 
@@ -24,9 +24,9 @@ class UsersController < ApplicationController
 
       if @user && @user.authenticate(params[:password])
         session[:user_id] = @user.id
-        redirect '/kids'
+        redirect :'/behavior_logs'   #redirect to '/behavior_logs' in BehaviorLogsController
        else
-        flash[:error] = "Invalid credentials. Try again!"
+        # flash[:error] = "Invalid credentials. Try again!"
         redirect to '/login'
       end
     end

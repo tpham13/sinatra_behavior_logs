@@ -10,15 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_21_035302) do
+ActiveRecord::Schema.define(version: 2020_08_21_220404) do
+
+  create_table "behavior_logs", force: :cascade do |t|
+    t.string "child_name"
+    t.integer "child_age"
+    t.string "behavior_description"
+    t.string "caregiver_response"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "email"
-    t.string "password"
+    t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "password_digest"    
   end
 
 end

@@ -1,9 +1,5 @@
 <h2>Welcome back! Please log in</h2>
 
-<% if flash[:error] %>
-<p class="error"><%= flash[:error] %></p>
-<% end %>
-
 <form action="/login" method="post">
 
     <input type="email" name="email" placeholder="Enter your email">
