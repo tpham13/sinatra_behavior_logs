@@ -1,7 +1,7 @@
 <% @logs.each do |log| %>
 
     <h3> Welcome to your children's behavior logs! </h3>
-    <p>Child's name:         <%=current_user.log.child_name%></p>
+    <p>Child's name:         <%=log.child_name%></p>
     <p>Child's age:          <%=log.child_age%></p>
     <p>Behavior:             <%=log.behavior_description%></p>
     <p>Caregiver's response: <%=log.caregiver_response%></p>
