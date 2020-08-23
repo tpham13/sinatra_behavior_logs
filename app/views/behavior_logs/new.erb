@@ -1,0 +1,29 @@
+<h2>New Behavior Log:</h2>
+
+<form action='/behavior_logs' method='POST'>
+    
+    <label for="child_name">Child's name:</label>
+    <input type="text" name="child_name">
+    <br/>
+    <br/>
+    <label for="child_age">Child's age:</label>
+    <input type="text" name="child_age">
+    <br/>
+    <br/>
+    <label for="behavior_description">Describe your child's behavior(including the date and time the behavior happened)</label>
+    <br/>
+    <textarea id="behavior_description" name="behavior_description"
+          rows="7" cols="40">
+    </textarea>
+    <br/>
+    <br/>
+    <label for="caregiver_response">What was the caregiver's response to the child's behavior?</label> 
+    <br/>
+    <textarea id="caregiver_response" name="caregiver_response"
+          rows="7" cols="40">
+    </textarea>
+    <br/>
+    <br/>
+    <input type="submit" value="submit">
+</form>
+
