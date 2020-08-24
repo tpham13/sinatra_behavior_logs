@@ -26,7 +26,7 @@ class UsersController < ApplicationController
         session[:user_id] = @user.id
         redirect :'/behavior_logs'   #redirect to '/behavior_logs' in BehaviorLogsController
        else
-        # flash[:error] = "Invalid credentials. Try again!"
+        flash[:error] = "Invalid credentials. Try again!"
         redirect to '/login'
       end
     end

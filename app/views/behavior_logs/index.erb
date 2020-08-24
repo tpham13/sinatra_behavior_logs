@@ -1,13 +1,16 @@
-<% @logs.each do |log| %>
+<h3> Hello, <%= current_user.username %>! Welcome to your children's behavior logs! </h3>
 
-    <h3> Welcome to your children's behavior logs! </h3>
-    <p>Child's name:         <%=log.child_name%></p>
-    <p>Child's age:          <%=log.child_age%></p>
-    <p>Behavior:             <%=log.behavior_description%></p>
-    <p>Caregiver's response: <%=log.caregiver_response%></p>
-    
-    <a href='/behavior_logs/new'>Add a behavior log </a>
-    <a href='/logout'>Logout</a>
+<% @logs.each do |log| %>
+    <div class='log'>
+        <p>Child's name:         <%=log.child_name%></p>
+        <p>Child's age:          <%=log.child_age%></p>
+        <p>Behavior:             <%=log.behavior_description%></p>
+        <p>Caregiver's response: <%=log.caregiver_response%></p>
+        <p><a href="/behavior_logs/<%= log.id %>/edit"> Edit </a></p>
+    </div>
+   
 <% end %>
 
+<p><a href='/behavior_logs/new'>Add a behavior log </a></p>
+<p><a href='/logout'>Logout</a></p>
 

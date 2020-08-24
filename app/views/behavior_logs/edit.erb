@@ -1,0 +1,27 @@
+<h2>Edit Your Behavior Log:</h2>
+
+<form action=‘/behavior_log/<%=@log.id%>’ method='post'>
+    <input type="hidden" name="_method" value="patch">   <!-- A hidden field let web developers include data that cannot be seen or modified by users when a form is submitted. A hidden field often stores what database record that needs to be updated when the form is submitted.-->
+    
+    <label for="child_name">Child's name:</label>
+    <input type="text" name="child_name" value="<%= @log.child_name %> ">
+    <br/>
+    <br/>
+    <label for="child_age">Child's age:</label>
+    <input type="text" name="child_age" value="<%=@log.child_age %> ">
+    <br/>
+    <br/>
+    <p>Describe your child's behavior(including the date and time the behavior happened):</p>
+    <textarea id="behavior_description" name="behavior_description" value="<%= @log.behavior_description %>"
+          rows="7" cols="40">
+    </textarea>
+    <br/>
+    <br/>
+    <p>What was the caregiver's response to the child's behavior?</p>
+    <textarea id="caregiver_response" name="caregiver_response" value="<%= @log.caregiver_response %>"
+          rows="7" cols="40">
+    </textarea>
+    <br/>
+    <br/>
+    <input type="submit" value="submit">
+</form>
