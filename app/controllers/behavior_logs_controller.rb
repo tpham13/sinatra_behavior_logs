@@ -38,9 +38,10 @@ class BehaviorLogsController < ApplicationController
 
     patch '/behavior_logs/:id' do 
         get_behavior_log
+        
         if @log.user == current_user #authorization check
             if @log.update(child_name: params[:child_name], child_age: params[:child_age], behavior_description: params[:behavior_description], caregiver_response: params[:caregiver_response])
-                redirect '/behavior_logs'
+                redirect to '/behavior_logs'
             else
                 erb :'behavior_logs/edit'
             end 
@@ -50,17 +51,20 @@ class BehaviorLogsController < ApplicationController
     end 
 
     
+
     delete '/behavior_logs/:id'  do 
-        @log = BehaviorLog.find_by_id(params[:id])
+        get_behavior_log
         if @log.user == current_user
             @log.delete
+            erb :'behavior_logs/index'
         else 
             redirect '/behavior_logs'
         end 
     end
 
+
     def get_behavior_log
-        @log = BehaviorLog.find(params[:id])
+        @log = BehaviorLog.find_by_id(params[:id])
     end
         
 end 
