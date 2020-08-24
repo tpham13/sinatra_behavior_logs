@@ -56,10 +56,10 @@ class BehaviorLogsController < ApplicationController
         get_behavior_log
         if @log.user == current_user
             @log.delete
-            erb :'behavior_logs/index'
-        else 
-            redirect '/behavior_logs'
+            
         end 
+            redirect '/behavior_logs'
+         
     end
 
 
