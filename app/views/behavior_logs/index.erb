@@ -7,6 +7,10 @@
         <p>Behavior:             <%=log.behavior_description%></p>
         <p>Caregiver's response: <%=log.caregiver_response%></p>
         <p><a href="/behavior_logs/<%= log.id %>/edit"> Edit </a></p>
+        <form action=‘/behavior_log/<%= log.id%>’ method='post'>
+            <input type="hidden" name="_method" value="delete">
+            <input type="submit" value="Delete">
+        </form>
     </div>
    
 <% end %>

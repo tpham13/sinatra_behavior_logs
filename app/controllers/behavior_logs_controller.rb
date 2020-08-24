@@ -50,7 +50,15 @@ class BehaviorLogsController < ApplicationController
     end 
 
     
-       
+    delete '/behavior_logs/:id'  do 
+        @log = BehaviorLog.find_by_id(params[:id])
+        if @log.user == current_user
+            @log.delete
+        else 
+            redirect '/behavior_logs'
+        end 
+    end
+
     def get_behavior_log
         @log = BehaviorLog.find(params[:id])
     end
