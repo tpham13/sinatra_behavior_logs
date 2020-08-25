@@ -19,7 +19,7 @@ class UsersController < ApplicationController
         erb :'/users/login'
     end
 
-    post '/login' do     #need to authenticate pw
+    post '/login' do     
       @user = User.find_by(email: params[:email])
 
       if @user && @user.authenticate(params[:password])

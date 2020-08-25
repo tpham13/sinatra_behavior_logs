@@ -26,7 +26,7 @@ class BehaviorLogsController < ApplicationController
         
     end 
 
-    get '/behavior_logs/:id/edit' do         #why when I use '/behavior_logs/:id/edit' it won't work? (plural logs)
+    get '/behavior_logs/:id/edit' do         
         get_behavior_log
         if @log.user == current_user
             erb :'behavior_logs/edit'
@@ -39,8 +39,12 @@ class BehaviorLogsController < ApplicationController
     patch '/behavior_logs/:id' do 
         get_behavior_log
         
-        if @log.user == current_user #authorization check
-            if @log.update(child_name: params[:child_name], child_age: params[:child_age], behavior_description: params[:behavior_description], caregiver_response: params[:caregiver_response])
+        if @log.user == current_user #this handle user authorization & the next line handle data validation
+            if @log.update(child_name: params[:child_name], 
+                child_age: params[:child_age], 
+                behavior_description: params[:behavior_description], 
+                caregiver_response: params[:caregiver_response]
+                )
                 redirect to '/behavior_logs'
             else
                 erb :'behavior_logs/edit'
