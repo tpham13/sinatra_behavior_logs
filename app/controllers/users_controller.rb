@@ -6,7 +6,6 @@ class UsersController < ApplicationController
 
     post '/signup' do
         if params[:username].empty? || params[:email].empty?
-          @error = "All fields must be completed"
           erb :'users/signup'
         else 
           user = User.create(params)
@@ -24,9 +23,8 @@ class UsersController < ApplicationController
 
       if @user && @user.authenticate(params[:password])
         session[:user_id] = @user.id
-        redirect :'/behavior_logs'   #redirect to '/behavior_logs' in BehaviorLogsController
+        redirect :'/behavior_logs'  
        else
-        flash[:error] = "Invalid credentials. Try again!"
         redirect to '/login'
       end
     end
