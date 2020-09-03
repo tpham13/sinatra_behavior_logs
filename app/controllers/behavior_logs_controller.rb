@@ -18,9 +18,8 @@ class BehaviorLogsController < ApplicationController
     post '/behavior_logs' do 
         @log = current_user.behavior_logs.build(params)
         if @log.save
-            redirect '/behavior_logs' #could use erb to index here but you won't see the new behavior log
+            redirect '/behavior_logs' 
         else 
-            flash[:error] = "Please complete all required fields!"
             erb :'behavior_logs/new'
         end
         
@@ -39,7 +38,7 @@ class BehaviorLogsController < ApplicationController
     patch '/behavior_logs/:id' do 
         get_behavior_log
         
-        if @log.user == current_user #this handle user authorization & the next line handle data validation
+        if @log.user == current_user 
             if @log.update(child_name: params[:child_name], 
                 child_age: params[:child_age], 
                 behavior_description: params[:behavior_description], 
